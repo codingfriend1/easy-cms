@@ -30,7 +30,7 @@ Getting up and running is as easy as 1, 2, 3, 4.
 2. Install your dependencies
 
     ```
-    cd path/to/Feathers-Vue; npm install
+    cd path/to/EasyCMS; npm install
     ```
 3. Run your build or watch
 
@@ -65,9 +65,6 @@ If you want emails to work using gmail add the following environment variables
   export GMAIL_PASS=yourpassword or app-password
   ```
 _See [How to set an app password](https://support.google.com/accounts/answer/185833)_
-## Testing
-
-Simply run `npm test` and all your tests in the `test/` directory to run server side unit test or run  `npm test-client` to run client side tests.
 
 ## Scaffolding
 

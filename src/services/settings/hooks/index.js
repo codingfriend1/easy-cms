@@ -13,26 +13,23 @@ const restriction = {name: 'clientID'};
 exports.before = {
   all: [],
   find: [
-    globalHooks.verifyOrRestrict
-auth.verifyOrRestrict(restriction),
-    globalHooks.populateOrRestrict(restriction),
+    globalHooks.verifyOrRestrict,
+    auth.verifyOrRestrict(restriction),
+    auth.populateOrRestrict(restriction),
     globalHooks.isEnabled(),
-    globalHooks.attachPermissions(),
     globalHooks.hasPermissionOrRestrict(permissionName, restriction)
   ],
   get: [
-    globalHooks.verifyOrRestrict
-auth.verifyOrRestrict(restriction),
-    globalHooks.populateOrRestrict(restriction),
+    globalHooks.verifyOrRestrict,
+    auth.verifyOrRestrict(restriction),
+    auth.populateOrRestrict(restriction),
     globalHooks.isEnabled(),
-    globalHooks.attachPermissions(),
     globalHooks.hasPermissionOrRestrict(permissionName, restriction)
   ],
   create: [
     auth.verifyToken(),
     auth.populateUser(),
     auth.restrictToAuthenticated(),
-    globalHooks.attachPermissions(),
     globalHooks.isEnabled(),
     globalHooks.hasPermission(permissionName)
   ],
@@ -40,7 +37,6 @@ auth.verifyOrRestrict(restriction),
     auth.verifyToken(),
     auth.populateUser(),
     auth.restrictToAuthenticated(),
-    globalHooks.attachPermissions(),
     globalHooks.isEnabled(),
     globalHooks.hasPermission(permissionName)
   ],
@@ -49,7 +45,6 @@ auth.verifyOrRestrict(restriction),
     auth.verifyToken(),
     auth.populateUser(),
     auth.restrictToAuthenticated(),
-    globalHooks.attachPermissions(),
     globalHooks.isEnabled(),
     globalHooks.hasPermission(permissionName)
   ],
@@ -57,7 +52,6 @@ auth.verifyOrRestrict(restriction),
     auth.verifyToken(),
     auth.populateUser(),
     auth.restrictToAuthenticated(),
-    globalHooks.attachPermissions(),
     globalHooks.isEnabled(),
     globalHooks.hasPermission(permissionName)
   ]

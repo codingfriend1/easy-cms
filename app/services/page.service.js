@@ -215,6 +215,10 @@
     }
   }
 
+  if(!global.services) {
+    global.services = {}
+  }
+
   global.services.page = service
 
 })()

@@ -1,5 +1,6 @@
 const rolesData = require('./services/roles.js')
 const settingsData = require('./services/settings.js')
+const pagesData = require('./services/pages.js')
 
 
 module.exports = function() {
@@ -11,7 +12,7 @@ module.exports = function() {
 
   app.configure(ifEmptyCreate('roles', rolesData))
   app.configure(ifEmptyCreate('settings', settingsData))
-  app.configure(ifEmptyCreate('pages', settingsData))
+  app.configure(ifEmptyCreate('pages', pagesData))
 
   let reset_seed = process.env.RESET_SEED && typeof process.env.RESET_SEED === 'string'? process.env.RESET_SEED.toLowerCase(): process.env.RESET_SEED
 

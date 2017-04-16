@@ -26,13 +26,22 @@ const app = new Vue(Object.assign({
 prepareSyncList(app.store)
 prepareConfirm(app.store)
 
-// Check if user is logged in then launch the app unless we are rendering from the server
-if(Vue.prototype.$isServer) {
-  app.$mount('#app')
-} else {
-  auth.isLoggedIn()
-    .then(res => app.$mount('#app'))
-    .catch(err => app.$mount('#app'))
-}
+// Wait for global.templates variable to be set. Check if user is logged in then launch the app unless we are rendering from the server
+
+var appStarted = false
+Object.defineProperty(global, 'templates', {
+  set: function(value) {
+    if(!appStarted) {
+      appStarted = true
+      if(Vue.prototype.$isServer) {
+        app.$mount('#app')
+      } else {
+        auth.isLoggedIn()
+          .then(res => app.$mount('#app'))
+          .catch(err => app.$mount('#app'))
+      }
+    }
+  }
+})
 
 module.exports = { app, router, store, syncList }

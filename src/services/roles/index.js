@@ -2,7 +2,7 @@
 
 const service = require('feathers-mongoose');
 const hooks = require('./hooks');
-const models = require('../../src/schemas').models
+const models = require('../../schemas').models
 
 module.exports = function() {
   const app = this;
