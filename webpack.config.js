@@ -148,22 +148,5 @@ configs[1] = Object.assign({
   }
 }, modules)
 
-configs[2] = Object.assign({
-  entry: [path.join(folders.theme, 'theme.js')],
-  output: {
-    path: path.join(folders.bundle, 'theme'),
-    pathinfo: true,
-    filename: 'theme.js',
-    sourceMapFilename: "[file].map"
-  },
-  devtool: isProduction? null: "cheap-source-map",
-  resolve: {
-    modules: ['node_modules'],
-    alias: {
-      vue: 'vue/dist/vue.js'
-    }
-  }
-}, modules)
-
 
 module.exports = configs

@@ -1,3 +1,5 @@
+const api = require('./api.service')
+
 (function() => {
 
   let service = {}
@@ -16,11 +18,6 @@
       _.debounce(service.save(_.cloneDeep(value)), 100)
     }
   })
-
-  function setHTMLHeader() {
-    document.title = _.get(_page, 'tabTitle')
-    jQuery('meta[name=description]').attr('content', _.get(_page, 'description'))
-  }
 
   function addHistory() {
     history.unshift(_.cloneDeep(_page))
@@ -51,17 +48,27 @@
         let hasPermission = auth.hasPermissionSync('editContent')
         let result
         if(hasPermission) {
-          result = await api.staging.find({belongsTo: 'meanbase-cms', key: query.url})
-          result = _.get(result, '0.data')
+          var [ result, err ] = await api.staging.find({belongsTo: 'easy-cms', key: query.url})
+
+          if(!err) {
+            result = _.get(result, '0.data')
+
+            if(!hasPermission || !result) {
+              var [ page_in_progress, err ] = await api.pages.find(query)
+
+              if(!err) {
+                result = page_in_progress[0]
+              }
+              
+            }
+
+          }
         }
 
-        if(!hasPermission || !result) {
-          result = await api.pages.find(query)
-
-          result = result[0]
-        }
+        
 
         _page = result
+
         return resolve(_page)
       } catch(err) {
         return reject(false)
@@ -87,7 +94,7 @@
 
     _page = data
 
-    api.staging.update({belongsTo: 'meanbase-cms', key: _page.url}, { data }).then(() => {
+    api.staging.update({belongsTo: 'easy-cms', key: _page.url}, { data }).then(() => {
 
     }).catch(err => {
       console.log('Error autosaving page: ', err)
@@ -118,7 +125,7 @@
       return false
     }
 
-    api.staging.delete({belongsTo: 'meanbase-cms', key: _page.url})
+    api.staging.delete({belongsTo: 'easy-cms', key: _page.url})
     history = []
 
     try {
@@ -139,7 +146,7 @@
 
     return Promise.all(
       api.pages.delete(query),
-      api.staging.delete({belongsTo: 'meanbase-cms', key: query.url})
+      api.staging.delete({belongsTo: 'easy-cms', key: query.url})
     )
   }
 
@@ -207,7 +214,7 @@
     try {
       _page = await api.pages.updateOne(_page._id, _page)
 
-      api.staging.delete({belongsTo: 'meanbase-cms', key: _page.url}).catch(err => {
+      api.staging.delete({belongsTo: 'easy-cms', key: _page.url}).catch(err => {
         console.log('Could not delete the leftover page autosave data.');
       })
     } catch(err) {

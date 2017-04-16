@@ -33,16 +33,23 @@ module.exports = function() {
  */
 function ifEmptyCreate(name, data) {
   return async () => {
-    try {
-      let found = await this.service(name).find({query: {}})
+
+    let [ err, found ] = await to( this.service( name).find({query: {}}) )
+
+    if(!err) {
       if(found && Number.isInteger(found.total) && Array.isArray(found.data)) {
         found = found.data
       }
       if(found.length !== 0) { return false }
-      await this.service(name).create(data)
-      console.log('default ' + name  + ' created')
-    } catch (err) {
-      if(err) { console.log('trouble seeding ' + name + ': ', err) }
+      let [ err ] = await to( this.service(name).create(data) )
+
+      if(!err) {
+        console.log('default ' + name  + ' created')
+      } else {
+        console.log('trouble seeding ' + name + ': ', err)
+      }
+    } else {
+      console.log('trouble seeding ' + name + ': ', err)
     }
   }
 }
