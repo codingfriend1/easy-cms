@@ -1,6 +1,6 @@
-# Feathers-Vue
+# Easy CMS
 
-> A Vue and FeathersJS fullstack app with authentication, email verification, and email support.&#34;
+> A Vue and FeathersJS fullstack CMS with authentication, email verification, and email support.&#34;
 
 ## About
 

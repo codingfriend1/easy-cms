@@ -1,6 +1,6 @@
 {
-  "name": "Feathers-Vue",
-  "description": "A Vue and FeathersJS fullstack app with authentication, email verification, and email support.",
+  "name": "Easy CMS",
+  "description": "A Vue and FeathersJS fullstack CMS with authentication, email verification, and email support.",
   "version": "0.0.0",
   "homepage": "",
   "main": "src/",
