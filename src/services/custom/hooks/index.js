@@ -10,25 +10,20 @@ const restriction = {};
 exports.before = {
   all: [],
   find: [
-    globalHooks.verifyOrRestrict
-auth.verifyOrRestrict(restriction),
-    globalHooks.populateOrRestrict(restriction),
-    globalHooks.isEnabled(),
-    globalHooks.attachPermissions()
+    auth.verifyOrRestrict(restriction),
+    auth.populateOrRestrict(restriction),
+    globalHooks.isEnabled()
   ],
   get: [
-    globalHooks.verifyOrRestrict
-auth.verifyOrRestrict(restriction),
-    globalHooks.populateOrRestrict(restriction),
+    auth.verifyOrRestrict(restriction),
+    auth.populateOrRestrict(restriction),
     globalHooks.isEnabled(),
-    globalHooks.attachPermissions()
   ],
   create: [
     auth.verifyToken(),
     auth.populateUser(),
     auth.restrictToAuthenticated(),
     globalHooks.isEnabled(),
-    globalHooks.attachPermissions(),
     globalHooks.updateByPermission()
   ],
   update: [
@@ -36,7 +31,6 @@ auth.verifyOrRestrict(restriction),
     auth.populateUser(restriction),
     auth.restrictToAuthenticated(),
     globalHooks.isEnabled(),
-    globalHooks.attachPermissions(),
     globalHooks.updateByPermission()
   ],
   patch: [
@@ -44,7 +38,6 @@ auth.verifyOrRestrict(restriction),
     auth.verifyToken(),
     auth.populateUser(),
     auth.restrictToAuthenticated(),
-    globalHooks.attachPermissions(),
     globalHooks.isEnabled(),
     globalHooks.updateByPermission()
   ],
@@ -52,7 +45,6 @@ auth.verifyOrRestrict(restriction),
     auth.verifyToken(),
     auth.populateUser(),
     auth.restrictToAuthenticated(),
-    globalHooks.attachPermissions(),
     globalHooks.isEnabled(),
     globalHooks.updateByPermission()
   ]

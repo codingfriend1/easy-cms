@@ -1,7 +1,7 @@
-import _ from 'lodash';
-import {objectOfArraysToArrayOfObjects, objectToArray} from '../../../components/utility';
+const _ = require('lodash');
+const {objectOfArraysToArrayOfObjects, objectToArray} = require('../../../utility');
 
-export default function(options) {
+module.exports = function(options) {
   return (hook) => {
     if (!hook.params.provider || !hook.data) { return hook; }
 

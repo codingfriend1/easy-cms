@@ -1,4 +1,7 @@
-import { arrayToObjectWithObject, arrayToObjectWithArray } from '../../../components/utility';
+const {
+  arrayToObjectWithObject, 
+  arrayToObjectWithArray
+} = require('../../../utility');
 
 
 // var months = new Array();
@@ -38,7 +41,7 @@ import { arrayToObjectWithObject, arrayToObjectWithArray } from '../../../compon
 //     return str;
 // }
 
-export default options => {
+module.exports = options => {
   return hook => {
     if(!hook.result) { return hook; }
     if(!hook.params.provider && !hook.params.forceCall) { return hook; }

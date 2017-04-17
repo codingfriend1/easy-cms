@@ -11,11 +11,11 @@ exports.schema = {
 		type: String,
     trim: true,
 		required: true,
-    validate: validators.matches(patterns.isText)
+    // validate: validators.matches(patterns.isText)
   },
   url: {
     type: String,
-    validate: validators.matches(patterns.isURI, {skipEmpty: true})
+    // validate: validators.matches(patterns.isURI, {skipEmpty: true})
   },
   date: {
   	type: Date,
@@ -24,16 +24,16 @@ exports.schema = {
   email: {
   	type: String,
     lowercase: true,
-    validate: validators.isEmail({skipEmpty:true})
+    // validate: validators.isEmail({skipEmpty:true})
   },
   ip: {
   	type: String,
     trim: true,
-    validate: validators.isIP({skipEmpty: true})
+    // validate: validators.isIP({skipEmpty: true})
   },
   gravatar: {
   	type: String,
-    validate: validators.matches(patterns.isURI, {skipEmpty: true})
+    // validate: validators.matches(patterns.isURI, {skipEmpty: true})
   },
   approved: {
   	type: Boolean,

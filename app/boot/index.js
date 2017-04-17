@@ -6,6 +6,7 @@ const prepareSyncList = require('../services/sync-list.service')
 require('../services/api.service')
 require('../services/notification.service')
 require('../services/helpers.service')
+require('../services/page.service')
 
 require('../components')
 require('../views')

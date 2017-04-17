@@ -13,9 +13,16 @@ if(!global.mongoose) {
 
 let schemas = {
   // inject schemas
+  ban: require("./ban.js"),
+  comments: require("./comments.js"),
+  custom: require("./custom.js"),
+  images: require("./images.js"),
+  menus: require("./menus.js"),
   message: require("./message.js"),
   roles: require("./roles.js"),
   settings: require("./settings.js"),
+  shared_content: require("./shared-content.js"),
+  staging: require("./staging.js"),
   user: require("./user.js"),
   // end inject schemas
 }

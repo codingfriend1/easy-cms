@@ -23,6 +23,8 @@ module.exports = function() {
 
   app.get('/*', (req, res) => {
 
+    return res.sendFile(indexPath);
+
     const code = fs.readFileSync(rendererPath, 'utf8');
     const renderer = serverRenderer.createBundleRenderer(code, options);
 

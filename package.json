@@ -46,6 +46,8 @@
     "jade": "^1.11.0",
     "lru-cache": "^4.0.2",
     "mongoose": "^4.8.3",
+    "mongoose-text-search": "^0.0.2",
+    "mongoose-validators": "^0.1.0",
     "nodemailer-smtp-transport": "^2.7.2",
     "passport": "^0.3.2",
     "passport-bitbucket-oauth2": "^0.1.2",
@@ -64,6 +66,7 @@
     "passport-paypal-token": "^2.1.0",
     "passport-spotify": "^0.3.0",
     "pm2": "^2.2.3",
+    "requestify": "^0.2.5",
     "serve-favicon": "^2.3.2",
     "vue-server-renderer": "^2.1.10",
     "winston": "^2.3.0"

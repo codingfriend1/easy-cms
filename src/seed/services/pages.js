@@ -6,16 +6,6 @@ var home = {
   "summary": "Easy CMS is a CMS built on FeatherJS, VueJS, and MongoDB",
   "description": "Easy CMS is a CMS built on FeatherJS, VueJS, and MongoDB",
   "published": true,
-  "links": {
-    "callToAction": {
-      "icon": {
-        "classes": "fa fa-book"
-      },
-      "title": "Documentation",
-      "url": "https://codingfriend1.gitbooks.io/Easy CMS/content/",
-      "target": "_blank"
-    }
-  },
   "title": "<h1>Easy CMS</h1>",
   "visibility": "admin",
   "content": {

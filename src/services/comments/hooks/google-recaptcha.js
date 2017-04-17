@@ -1,6 +1,6 @@
 var requestify = require('requestify');
-import _ from 'lodash';
-import errors from 'feathers-errors';
+const _ = require('lodash');
+const errors = require('feathers-errors');
 
 module.exports = (options) => {
   return async hook => {

@@ -1,14 +1,14 @@
 'use strict';
 
 const service = require('feathers-mongoose');
-const models = require('../../src/schemas').models
+const models = require('../../schemas').models
 const hooks = require('./hooks');
 
 module.exports = function() {
   const app = this;
 
   const options = {
-    Model: models.commments,
+    Model: models.comments,
     lean: true,
     paginate: {
       default: 30
@@ -16,14 +16,14 @@ module.exports = function() {
   };
 
   // Initialize our service with any options it requires
-  app.use('/commments', service(options));
+  app.use('/comments', service(options));
 
   // Get our initialize service to that we can bind hooks
-  const commmentsService = app.service('/commments');
+  const commentsService = app.service('/comments');
 
   // Set up our before hooks
-  commmentsService.before(hooks.before);
+  commentsService.before(hooks.before);
 
   // Set up our after hooks
-  commmentsService.after(hooks.after);
+  commentsService.after(hooks.after);
 };

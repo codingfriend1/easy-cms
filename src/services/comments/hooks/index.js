@@ -1,8 +1,8 @@
-import errors from 'feathers-errors';
-import areCommentsPermitted from './are-comments-permitted';
-import prependSlash from './prepend-slash';
-import isApproved from './is-approved';
-import recaptcha from './google-recaptcha';
+const errors = require('feathers-errors');
+const areCommentsPermitted = require('./are-comments-permitted');
+const prependSlash = require('./prepend-slash');
+const isApproved = require('./is-approved');
+const recaptcha = require('./google-recaptcha');
 
 const globalHooks = require('../../../hooks');
 const hooks = require('feathers-hooks');
@@ -16,16 +16,14 @@ exports.before = {
     prependSlash()
   ],
   find: [
-    globalHooks.verifyOrRestrict
-auth.verifyOrRestrict(restriction),
-    globalHooks.populateOrRestrict(restriction),
+    auth.verifyOrRestrict(restriction),
+    auth.populateOrRestrict(restriction),
     globalHooks.isEnabled(),
     globalHooks.hasPermissionOrRestrict(permissionName, restriction)
   ],
   get: [
-    globalHooks.verifyOrRestrict
-auth.verifyOrRestrict(restriction),
-    globalHooks.populateOrRestrict(restriction),
+    auth.verifyOrRestrict(restriction),
+    auth.populateOrRestrict(restriction),
     globalHooks.isEnabled(),
     globalHooks.hasPermissionOrRestrict(permissionName, restriction)
   ],

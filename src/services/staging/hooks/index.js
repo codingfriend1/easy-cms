@@ -9,7 +9,6 @@ exports.before = {
     auth.verifyToken(),
     auth.populateUser(),
     auth.restrictToAuthenticated(),
-    globalHooks.attachPermissions(),
     globalHooks.isEnabled(),
     globalHooks.hasPermission('editContent'),
   ],

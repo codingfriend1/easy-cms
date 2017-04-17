@@ -1,7 +1,6 @@
 const Vue = require('vue')
 
 module.exports = function(context) {
-  var store, app, router, boot
   var { store, app, router } = require('./app/boot')
 
   const meta = app.$meta()

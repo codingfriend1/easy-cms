@@ -1,2 +1,4 @@
-global.templates.home = require("./home.vue")
-global.templates.page = require("./page.vue")
+global.templates = {
+	home: require("./home.vue"),
+	page: require("./page.vue")
+}

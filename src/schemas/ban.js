@@ -6,11 +6,11 @@ exports.schema = {
   	type: String,
     lowercase: true,
     unique: true,
-    validate: validators.isEmail({skipEmpty:true})
+    // validate: validators.isEmail({skipEmpty:true})
   },
   ip: {
   	type: String,
     trim: true,
-    validate: validators.isIP({skipEmpty: true})
+    // validate: validators.isIP({skipEmpty: true})
   }
 };

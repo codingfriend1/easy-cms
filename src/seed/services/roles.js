@@ -26,7 +26,6 @@ const level3 = {
     'publishContent',
     'deleteContent',
     'manageMedia',
-    'restrictAccess',
     'manageExtensions',
     'moderateComments'
   ]
@@ -39,7 +38,6 @@ const level4 = {
     'publishContent',
     'deleteContent',
     'manageMedia',
-    'restrictAccess',
     'manageExtensions',
     'moderateComments',
     'manageUsers',
@@ -55,12 +53,11 @@ const level5 = {
     'publishContent',
     'deleteContent',
     'manageMedia',
-    'restrictAccess',
     'manageExtensions',
     'moderateComments',
     'manageUsers',
     'manageRoles',
-    'changeSiteSettings',
+    'manageSettings',
     'importExportData',
     'viewAnalytics',
   ]
@@ -73,14 +70,12 @@ const admin = {
     'publishContent',
     'deleteContent',
     'manageMedia',
-    'restrictAccess',
     'manageExtensions',
     'moderateComments',
     'manageUsers',
     'manageRoles',
-    'changeSiteSettings',
+    'manageSettings',
     'importExportData',
-    'deleteSite',
     'viewAnalytics'
   ]
 }

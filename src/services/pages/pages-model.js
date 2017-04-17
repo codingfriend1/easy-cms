@@ -7,7 +7,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const patterns = require('../../components/patterns');
+const patterns = require('../../patterns');
 const validators = require('mongoose-validators');
 const textSearch = require('mongoose-text-search');
 
@@ -112,13 +112,13 @@ const pagesSchema = new Schema({
   },
 	description: {
 		type: String,
-		required: false,
-		validate: validators.matches(patterns.isText, {skipEmpty: true})
+		required: false
+		// validate: validators.matches(patterns.isText, {skipEmpty: true})
 	},
 	summary: {
 		type: String,
-		required: false,
-		validate: validators.matches(patterns.isText, {skipEmpty: true})
+		required: false
+		// validate: validators.matches(patterns.isText, {skipEmpty: true})
 	},
 	meta: Object,
 	published: {

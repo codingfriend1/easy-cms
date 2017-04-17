@@ -1,7 +1,7 @@
 
-import errors from 'feathers-errors'
+const errors = require('feathers-errors')
 
-export default options => {
+module.exports = options => {
   return async hook => {
     if (!hook.params.provider) { return hook; }
 

@@ -1,6 +1,7 @@
-const api = require('./api.service')
+(function() {
 
-(function() => {
+  const api = require('./api.service');
+  const auth = require('./auth.service');
 
   let service = {}
 
@@ -37,18 +38,20 @@ const api = require('./api.service')
 
     return new Promise(async (resolve, reject) => {
       if(!query) {
-        query = {url: window.location.pathname}
+        // query = {url: window.location.pathname}
+        query = {url: '/'}
       } else if (!query.url) {
         console.log('You must provide a url to get a page');
         // return false
         return reject(false)
+
       }
 
       try {
         let hasPermission = auth.hasPermissionSync('editContent')
-        let result
+
         if(hasPermission) {
-          var [ result, err ] = await api.staging.find({belongsTo: 'easy-cms', key: query.url})
+          var [ err, result ] = await api.staging.find({belongsTo: 'easy-cms', key: query.url})
 
           if(!err) {
             result = _.get(result, '0.data')

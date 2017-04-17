@@ -2,37 +2,32 @@ const globalHooks = require('../../../hooks')
 const hooks = require('feathers-hooks')
 const auth = require('feathers-authentication').hooks
 
-import notifySubscribers from './notify-subscribers'
-import convertForIncoming from './convert-for-incoming'
-import convertForOutgoing from './convert-for-outgoing'
-import { deleteMenu, createMenu, updateMenu } from './mirror-menus'
+const notifySubscribers = require('./notify-subscribers')
+const convertForIncoming = require('./convert-for-incoming')
+const convertForOutgoing = require('./convert-for-outgoing')
+const { deleteMenu, createMenu, updateMenu } = require('./mirror-menus')
 
 const permissionName = 'editContent'
-const restriction = {published: true}
+const restriction = { published: true }
 
 exports.before = {
   all: [],
   find: [
-    globalHooks.verifyOrRestrict
-auth.verifyOrRestrict(restriction),
-    globalHooks.populateOrRestrict(restriction),
-    globalHooks.isEnabled(),
-    globalHooks.attachPermissions(),
-    globalHooks.hasPermissionOrRestrict(permissionName, restriction)
+    // auth.verifyOrRestrict(restriction),
+    // auth.populateOrRestrict(restriction),
+    // globalHooks.isEnabled(),
+    // globalHooks.hasPermissionOrRestrict(permissionName, restriction)
   ],
   get: [
-    globalHooks.verifyOrRestrict
-auth.verifyOrRestrict(restriction),
-    globalHooks.populateOrRestrict(restriction),
+    auth.verifyOrRestrict(restriction),
+    auth.populateOrRestrict(restriction),
     globalHooks.isEnabled(),
-    globalHooks.attachPermissions(),
     globalHooks.hasPermissionOrRestrict(permissionName, restriction),
   ],
   create: [
     auth.verifyToken(),
     auth.populateUser(),
     auth.restrictToAuthenticated(),
-    globalHooks.attachPermissions(),
     globalHooks.isEnabled(),
     globalHooks.hasPermission(permissionName),
     convertForIncoming()
@@ -41,7 +36,6 @@ auth.verifyOrRestrict(restriction),
     auth.verifyToken(),
     auth.populateUser(),
     auth.restrictToAuthenticated(),
-    globalHooks.attachPermissions(),
     globalHooks.isEnabled(),
     globalHooks.hasPermission(permissionName),
     notifySubscribers(),
@@ -52,7 +46,6 @@ auth.verifyOrRestrict(restriction),
     auth.verifyToken(),
     auth.populateUser(),
     auth.restrictToAuthenticated(),
-    globalHooks.attachPermissions(),
     globalHooks.isEnabled(),
     globalHooks.hasPermission(permissionName),
     notifySubscribers(),
@@ -62,7 +55,6 @@ auth.verifyOrRestrict(restriction),
     auth.verifyToken(),
     auth.populateUser(),
     auth.restrictToAuthenticated(),
-    globalHooks.attachPermissions(),
     globalHooks.isEnabled(),
     globalHooks.hasPermission(permissionName)
   ]

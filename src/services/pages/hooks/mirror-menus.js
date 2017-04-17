@@ -1,5 +1,5 @@
-import errors from 'feathers-errors'
-import _ from 'lodash'
+const errors = require('feathers-errors')
+const _ = require('lodash')
 
 async function interactMenuStaging(menu, cb) {
   if(!cb) { return false }
@@ -55,7 +55,7 @@ async function removeMenu(page) {
 }
 
 
-export const deleteMenu = options => {
+exports.deleteMenu = options => {
   return hook => {
     removeMenu = removeMenu.bind(hook.app)
 
@@ -114,7 +114,7 @@ async function addMenu(page) {
   }
 }
 
-export const createMenu = options => {
+exports.createMenu = options => {
   return async hook => {
     addMenu = addMenu.bind(hook.app)
 
@@ -172,7 +172,7 @@ async function patchMenu(page) {
 
 
 
-export const updateMenu = options => {
+exports.updateMenu = options => {
   return async hook => {
 
     patchMenu = patchMenu.bind(hook.app)

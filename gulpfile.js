@@ -7,7 +7,7 @@ const runSequence = require('run-sequence')
 const folders = {
   app: path.resolve(__dirname, 'app'),
   components: path.resolve(__dirname, 'app', 'components'),
-  schemas: path.resolve(__dirname, 'shared', 'schemas'),
+  schemas: path.resolve(__dirname, 'src', 'schemas'),
   css: path.resolve(__dirname, 'app', 'css'),
   views: path.resolve(__dirname, 'app', 'views'),
   root: path.resolve(__dirname)
@@ -157,5 +157,5 @@ gulp.task('inject-schemas', function() {
 })
 
 gulp.task('default', function(done) {
-  runSequence('inject-css', 'inject-component-js', 'inject-vue', 'inject-views', done)
+  runSequence('inject-css', 'inject-component-js', 'inject-vue', 'inject-views', 'inject-schemas', done)
 })

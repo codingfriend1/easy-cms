@@ -1,7 +1,7 @@
 'use strict';
 
 const service = require('feathers-mongoose');
-const models = require('../../src/schemas').models
+const models = require('../../schemas').models
 const hooks = require('./hooks');
 
 module.exports = function() {

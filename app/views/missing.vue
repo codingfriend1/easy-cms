@@ -14,7 +14,6 @@
 </template>
 
 <script>
-
 module.exports = {
 	
 }
